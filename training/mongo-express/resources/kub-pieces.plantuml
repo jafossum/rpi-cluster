@@ -1,0 +1,24 @@
+@startuml kub-Pieces
+
+title Kubernetes Mongo + Mongo Express - Basic Description
+
+[Web Client] as wc
+
+package "Kubernetes Cluster" {
+    [LoadBalancer] as lb #LightCyan
+    [Mongo Express] as me #LightBlue
+    [Internal Service] as is #LightSkyBlue
+    database "MongoDB" as db #LightGreen
+    [Secret] as s #LightCoral
+    [ConfigMap] as cm #LightBlue
+}
+
+wc -r-> lb #Black
+lb .r.> me #Blue
+me .r.> is #Blue
+is .d.> db #Blue
+
+cm -[hidden]u- lb
+cm -[hidden]r- s
+
+@enduml
