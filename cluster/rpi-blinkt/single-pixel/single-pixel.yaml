@@ -19,9 +19,6 @@ spec:
       - name: single-pixel
         image: jafossum/blinkt-single-pixel
         imagePullPolicy: IfNotPresent
-        env: 
-        - name: SLEEP
-          value: "60"
         volumeMounts:
         - mountPath: /home/pi/pixels
           name: dir

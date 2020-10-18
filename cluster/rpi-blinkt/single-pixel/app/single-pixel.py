@@ -5,6 +5,9 @@ import time
 import os
 
 dir = "/home/pi/pixels/"
+SLEEP = int(os.environ.get("SLEEP",10))
+
+print(SLEEP)
 
 for i in range(8):
     print(i)
@@ -16,4 +19,5 @@ for i in range(8):
         f = open(dir + str(i), "a")                 
         break
 
-time.sleep(int(os.environ.get("SLEEP", 60)))
+time.sleep(SLEEP)
+
