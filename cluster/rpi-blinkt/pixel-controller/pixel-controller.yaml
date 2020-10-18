@@ -3,7 +3,6 @@ apiVersion: apps/v1
 kind: DaemonSet
 metadata:
   name: pixel-controller
-  namespace: pixel-controller
   labels:
     app: pixel-controller
 spec:
