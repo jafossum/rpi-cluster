@@ -20,3 +20,19 @@ Runs an endless loop, where it checks if any of the files names 0 through 7 are 
 **pixel-controller.yaml**
 
 Kubernetes DaemonSet that runs the pixel-controller app and attaches it to a volume that is shared between all single-pixel replicas running on the node. The CLEAR_SLEEP and BRIGHTNESS variables are set in this manifest.
+
+## single-pixel
+
+Simple Python application that checks if a file between 0 and 7 exists on the attached volume and creates the next iterated number if the limit of 8 LED's has not been filled.
+
+Variables:
+
+SLEEP = Sets the sleep interval after running the script. This is set to 60 default.
+
+**single-pixel.py**
+
+Checks if a file named 0 through 7 exists, if not, it creates the next iterated number of any existing file.
+
+**single-pixel.yaml**
+
+Contains a preStop command, that deletes the last created file. Meaning, if the file named 5 was created last, deleting the replica will delete that file named 5, thus removing one LED from the strip.
