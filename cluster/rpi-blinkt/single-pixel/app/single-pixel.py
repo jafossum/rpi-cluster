@@ -6,10 +6,12 @@ import os
 
 dir = "/home/pi/pixels/"
 cf = ""
-SLEEP = int(os.environ.get("SLEEP",10))
-BRIGHTNESS = int(os.environ.get("BRIGHTNESS", 128))
+SLEEP = int(os.environ.get("SLEEP",60))
+BRIGHTNESS_1 = int(os.environ.get("BRIGHTNESS_1", 0))
+BRIGHTNESS_2 = int(os.environ.get("BRIGHTNESS_2", 0))
+BRIGHTNESS_3 = int(os.environ.get("BRIGHTNESS_3", 128))
 
-print(SLEEP)
+print('Brightness: {} {} {}, Sleep: {}'.format(BRIGHTNESS_1, BRIGHTNESS_2, BRIGHTNESS_3, SLEEP))
 
 for i in range(8):
     print(i)
@@ -20,10 +22,11 @@ for i in range(8):
         print("Pixel ",i," available, activating!")
         cf = dir + str(i)
         with open(cf, 'w') as f:
-            f.write('{}'.format(BRIGHTNESS))
+            f.write('{}:{}:{}'.format(BRIGHTNESS_1, BRIGHTNESS_2, BRIGHTNESS_3))
         break
 
-time.sleep(SLEEP)
-
-if cf != "":
-    os.remove(cf)
+try:
+    time.sleep(SLEEP)
+finally:
+    if cf != "":
+        os.remove(cf)
