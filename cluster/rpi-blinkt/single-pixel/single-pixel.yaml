@@ -19,8 +19,6 @@ spec:
       - name: single-pixel
         image: jafossum/blinkt-single-pixel:latest
         env:
-        - name: SLEEP
-          value: "60"
         - name: BRIGHTNESS_1
           value: "0"
         - name: BRIGHTNESS_2
