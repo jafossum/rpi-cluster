@@ -14,6 +14,12 @@ while True:
     no_pixels = 8
     for i in range(0,8):
         if os.path.isfile(dir + str(i)):
+            with open(dir + str(i), 'r') as f:
+                data = f.read()
+                try:
+                    BRIGHTNESS = int(data)
+                except:
+                    pass
             blinkt.set_pixel(i, 0, 0, int(BRIGHTNESS))
             no_pixels += 1
         else:

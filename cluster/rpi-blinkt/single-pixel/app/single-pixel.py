@@ -5,7 +5,9 @@ import time
 import os
 
 dir = "/home/pi/pixels/"
+cf = ""
 SLEEP = int(os.environ.get("SLEEP",10))
+BRIGHTNESS = int(os.environ.get("BRIGHTNESS", 128))
 
 print(SLEEP)
 
@@ -16,8 +18,12 @@ for i in range(8):
         break
     elif not os.path.isfile(dir + str(i)):          # If the file is not there, create it, so the pixel controller will know to turn on the pixel
         print("Pixel ",i," available, activating!")
-        f = open(dir + str(i), "a")                 
+        cf = dir + str(i)
+        with open(cf, 'w') as f:
+            f.write('{}'.format(BRIGHTNESS))
         break
 
 time.sleep(SLEEP)
 
+if cf != "":
+    os.remove(cf)
