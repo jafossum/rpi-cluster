@@ -21,8 +21,7 @@ spec:
         effect: NoSchedule
       containers:
       - name: pixel-controller
-        image: jafossum/blinkt-pixel-controller
-        imagePullPolicy: IfNotPresent
+        image: jafossum/blinkt-pixel-controller:latest
         env: 
         - name: CLEAR_SLEEP
           value: "0.1"

@@ -17,8 +17,7 @@ spec:
     spec:
       containers:
       - name: single-pixel
-        image: jafossum/blinkt-single-pixel
-        imagePullPolicy: IfNotPresent
+        image: jafossum/blinkt-single-pixel:latest
         volumeMounts:
         - mountPath: /home/pi/pixels
           name: dir
