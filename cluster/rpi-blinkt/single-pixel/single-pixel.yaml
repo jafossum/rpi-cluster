@@ -23,10 +23,6 @@ spec:
           name: dir
         securityContext:
           privileged: true
-        lifecycle:
-          preStop:
-            exec:
-              command: ["/bin/sh","-c","rm \"$(stat -c \"%Y:%n\" /home/pi/pixels/* | sort -t: -n | tail -1 | cut -d: -f2-)\""]
       imagePullSecrets:
       - name: regcred
       volumes:
