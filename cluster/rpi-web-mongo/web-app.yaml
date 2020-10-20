@@ -35,6 +35,11 @@ spec:
             configMapKeyRef:
               name: mongodb-configmap
               key: database_url
+      volumes:
+      - name: dir
+        hostPath:
+          path: /home/pi/pixels
+          type: DirectoryOrCreate
 ---
 apiVersion: v1
 kind: Service
