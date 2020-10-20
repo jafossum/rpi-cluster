@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: mongodb
-        image: mongo
+        image: jafossum/mongodb-rpi4:latest
         ports:
         - containerPort: 27017
         env:
@@ -42,3 +42,4 @@ spec:
   - protocol: TCP
     port: 27017
     targetPort: 27017
+
