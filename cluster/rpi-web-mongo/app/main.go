@@ -11,6 +11,6 @@ func handler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	http.HandleFunc("/blink", handler)
-	log.Fatal(http.ListenAndServe(":80", nil))
+	http.HandleFunc("/blinkt", handler)
+	log.Fatal(http.ListenAndServe(":8081", nil))
 }

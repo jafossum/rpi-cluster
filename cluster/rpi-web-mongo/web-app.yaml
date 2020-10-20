@@ -18,7 +18,7 @@ spec:
       - name: web-app
         image: jafossum/web-app-blinkt:latest
         ports:
-        - containerPort: 80
+        - containerPort: 8081
         env:
         - name: ME_CONFIG_MONGODB_ADMINUSERNAME
           valueFrom:
@@ -46,6 +46,6 @@ spec:
   type: LoadBalancer
   ports:
   - protocol: TCP
-    port: 80
-    targetPort: 80
+    port: 8081
+    targetPort: 8081
     nodePort: 30000
