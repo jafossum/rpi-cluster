@@ -35,6 +35,9 @@ spec:
             configMapKeyRef:
               name: mongodb-configmap
               key: database_url
+        volumeMounts:
+        - mountPath: /home/pi/pixels
+          name: dir 
       volumes:
       - name: dir
         hostPath:
