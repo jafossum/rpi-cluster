@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-app
+  labels:
+    app: web-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web-app
+  template:
+    metadata:
+      labels: 
+        app: web-app
+    spec:
+      containers:
+      - name: web-app
+        image: jafossum/web-app-blinkt:latest
+        ports:
+        - containerPort: 8081
+        volumeMounts:
+        - mountPath: /home/pi/pixels
+          name: dir 
+      volumes:
+      - name: dir
+        hostPath:
+          path: /home/pi/pixels
+          type: DirectoryOrCreate
+---
+apiVersion: v1
+kind: Service
+metadata: 
+  name: web-app-service
+spec:
+  selector:
+    app: web-app
+  type: LoadBalancer
+  ports:
+  - protocol: TCP
+    port: 8081
+    targetPort: 8081
+    nodePort: 30000
+

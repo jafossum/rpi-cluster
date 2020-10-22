@@ -14,12 +14,15 @@ Runs an endless loop, where it checks if any of the files names 0 through 7 are 
 
 **Variables:**
 
-- BRIGHTNESS = Give this variable a number between 0 and 255 to set the brightness of the LED's.
+- BRIGHTNESS_1 = Give this variable a number between 0 and 255 to set the brightness of LED color 1.
+- BRIGHTNESS_2 = Give this variable a number between 0 and 255 to set the brightness of LED color 2.
+- BRIGHTNESS_3 = Give this variable a number between 0 and 255 to set the brightness of LED color 3.
 - CLEAR_SLEEP = With this variable, you can adjust the sleep time in-between LED updates
 
 **pixel-controller.yaml**
 
-Kubernetes DaemonSet that runs the pixel-controller app and attaches it to a volume that is shared between all single-pixel replicas running on the node. The CLEAR_SLEEP and BRIGHTNESS variables are set in this manifest.
+Kubernetes DaemonSet that runs the pixel-controller app and attaches it to a volume that is shared between all single-pixel replicas running on the node. The CLEAR_SLEEP and BRIGHTNESS-X variables are set in this manifest.
+BRIGHTNESS_X are atempted read from the 0-7 files, so the manifest holds the default / fallback values
 
 ## single-pixel
 
@@ -27,12 +30,16 @@ Simple Python application that checks if a file between 0 and 7 exists on the at
 
 Variables:
 
-SLEEP = Sets the sleep interval after running the script. This is set to 60 default.
+- BRIGHTNESS_1 = Give this variable a number between 0 and 255 to set the brightness of LED color 1.
+- BRIGHTNESS_2 = Give this variable a number between 0 and 255 to set the brightness of LED color 2.
+- BRIGHTNESS_3 = Give this variable a number between 0 and 255 to set the brightness of LED color 3.
+- SLEEP = Sets the sleep interval after running the script. This is set to 60 default.
 
 **single-pixel.py**
 
 Checks if a file named 0 through 7 exists, if not, it creates the next iterated number of any existing file.
+BRIGHTNESS_X are written to the 0-7 files.
 
 **single-pixel.yaml**
 
-Contains a preStop command, that deletes the last created file. Meaning, if the file named 5 was created last, deleting the replica will delete that file named 5, thus removing one LED from the strip.
+Contains a single-pxel deployment
