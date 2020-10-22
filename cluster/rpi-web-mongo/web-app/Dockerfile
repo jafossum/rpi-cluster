@@ -4,11 +4,7 @@ LABEL maintainer="John A. Fossum"
 
 WORKDIR /app
 
-COPY go.mod .
-COPY go.sum .
-RUN go mod download
 COPY app .
-
 RUN go build -o app
 
 FROM balenalib/raspberry-pi-alpine:run

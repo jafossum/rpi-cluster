@@ -19,22 +19,6 @@ spec:
         image: jafossum/web-app-blinkt:latest
         ports:
         - containerPort: 8081
-        env:
-        - name: MONGODB_ADMINUSERNAME
-          valueFrom:
-            secretKeyRef:
-              name: mongodb-secret
-              key: mongo-root-username
-        - name: MONGODB_ADMINPASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: mongodb-secret
-              key: mongo-root-password
-        - name: MONGODB_SERVER
-          valueFrom:
-            configMapKeyRef:
-              name: mongodb-configmap
-              key: database_url
         volumeMounts:
         - mountPath: /home/pi/pixels
           name: dir 
