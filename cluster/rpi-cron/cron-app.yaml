@@ -3,7 +3,7 @@ kind: CronJob
 metadata:
   name: cron-app
 spec:
-  schedule: "*/1 * * * *"
+  schedule: "* * * * *"
   jobTemplate:
     spec:
       template:
