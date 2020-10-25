@@ -1,0 +1,22 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: cron-app
+spec:
+  schedule: "* * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: cron-app
+              image: jafossum/cron-app-blinkt:latest
+              volumeMounts:
+                - mountPath: /home/pi/pixels
+                  name: dir
+          restartPolicy: OnFailure
+          volumes:
+            - name: dir
+              hostPath:
+                path: /home/pi/pixels
+                type: DirectoryOrCreate
