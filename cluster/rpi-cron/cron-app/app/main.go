@@ -5,9 +5,10 @@ import (
 	"io/ioutil"
 	"log"
 	"math/rand"
-	"net/http"
 	"os"
+	"os/signal"
 	"strconv"
+	"syscall"
 	"time"
 )
 
@@ -34,7 +35,7 @@ func handleJob() {
 	select {
 	case <-c:
 		fmt.Println("\r- Ctrl+C pressed in Terminal")
-	case <- time.After(10 * time.Second):
+	case <-time.After(10 * time.Second):
 		fmt.Println("\r- Job Done :)")
 	}
 }
