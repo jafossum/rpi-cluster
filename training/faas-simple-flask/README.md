@@ -78,7 +78,7 @@ Minikube needs to export the LoadBalancer service, so that it can be accessed fr
 
 Run the following command, replacing the adress with the output from the minikube service
 
-    $ while true; do curl http://127.0.0.1:51122; sleep 0.2; done
+    $ while true; do curl http://127.0.0.1:51122 ; sleep 0.2; done
 
 Now you should see an output like this
 
@@ -92,6 +92,12 @@ Now you should see an output like this
 ```
 
 Now we see that the network traffic is LoadBalanced to the different pods running on the Kubernetes system
+
+**Run with Query Parameters**
+
+Test with Query Paramaters
+
+    $ while true; do curl http://127.0.0.1:51122/?user=john&time=234 ; sleep 0.2; done
 
 ### Delete deployment
 

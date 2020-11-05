@@ -1,5 +1,5 @@
 
-from flask import Flask
+from flask import Flask, request
 from flask_restful import Resource, Api
 import platform
 import os
@@ -13,7 +13,17 @@ class sayHello(Resource):
         self.un = platform.uname()[1]
 
     def get(self):
-        return 'Hello from ' + self.un
+        st = ''
+        
+        user = request.args.get('user', '')
+        time = request.args.get('time', 0)
+
+        if user != '':
+            st += ', user: ' + user
+        if time != 0:
+            st += ', time: ' + time
+
+        return 'Hello from ' + self.un + st
 
 api.add_resource(sayHello, '/')
 
