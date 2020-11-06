@@ -3,6 +3,7 @@
 Kubernetes training demos
 
 - [Mongo Express - Kubernetes Basics](mongo-express/README.md)
+- [FaaS Simple Example - Wrap python code and expose As A Service on Kubernetes](faas-simple-flask/README.md)
 - [OpenFaaS with Minikube - Funtions as a Service running on Kubernetes](openfaas-minikube/README.md)
 
 ## Creating Secrets
