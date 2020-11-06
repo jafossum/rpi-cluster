@@ -137,7 +137,12 @@ Use this passwrod in the web login fomr for user `admin`
 
 The OpenFaaS team has put together a OpenFaaS training workshop. This can be found [here](https://docs.openfaas.com/tutorials/workshop/)
 
-### Delete OpenFaas deployment
+## OpenFaas Function Examples
+
+- [Python3-HTTP](test-function/README.md)
+- [Golang-HTTP](test-function-go/README.md)
+
+## Delete OpenFaas deployment
 
 Clean up the resources created
 
