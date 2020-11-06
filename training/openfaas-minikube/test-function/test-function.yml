@@ -1,0 +1,8 @@
+version: 1.0
+provider:
+  name: openfaas
+functions:
+  test-function:
+    lang: python3-http
+    handler: ./test-function
+    image: jafossum/test-function:latest
