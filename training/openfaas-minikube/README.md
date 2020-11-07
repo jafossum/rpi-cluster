@@ -139,8 +139,10 @@ The OpenFaaS team has put together a OpenFaaS training workshop. This can be fou
 
 ## OpenFaas Function Examples
 
-- [Python3-HTTP](test-function/README.md)
-- [Golang-HTTP](test-function-go/README.md)
+- [TestFunction Python3-HTTP](test-function/README.md)
+- [TestFunction Golang-Middleware](test-function-go/README.md)
+- [Encrypt using BCrypt](bcrypt-encrypt/README.md)
+- [Validate using BCrypt](bcrypt-validate/README.md)
 
 ## Delete OpenFaas deployment
 

@@ -1,0 +1,8 @@
+version: 1.0
+provider:
+  name: openfaas
+functions:
+  bcrypt-encrypt:
+    lang: golang-middleware
+    handler: ./bcrypt-encrypt
+    image: jafossum/bcrypt-encrypt:latest
