@@ -1,0 +1,8 @@
+version: 1.0
+provider:
+  name: openfaas
+functions:
+  bcrypt-validate:
+    lang: golang-middleware
+    handler: ./bcrypt-validate
+    image: jafossum/bcrypt-validate:latest
