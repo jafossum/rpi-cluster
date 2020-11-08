@@ -15,7 +15,9 @@ import (
 )
 
 const (
-	addr = "http://127.0.0.1:30000/blinkt"
+	endpoint    = "/blinkt"
+	defaultIP   = "127.0.0.1"
+	defaultPort = 30000
 )
 
 func main() {
@@ -23,29 +25,33 @@ func main() {
 	rand.Seed(time.Now().UnixNano())
 
 	nt := flag.Int("n", 1, "Number of threads")
+	ip := flag.String("i", defaultIP, "IP Address")
+	po := flag.Int("p", defaultPort, "Port")
+
 	flag.Parse()
 
+	addr := "http://" + *ip + ":" + strconv.Itoa(*po) + endpoint
 	i := 0
 	for i < *nt {
-		go loopReuest(i)
+		go loopReuest(addr, i)
 		i++
 	}
 
 	blockUntilClose()
 }
 
-func loopReuest(i int) {
+func loopReuest(addr string, i int) {
 	for {
 		time.Sleep(time.Duration(rand.Intn(1000)) * time.Millisecond)
 		log.Println("Make new reuest - " + strconv.Itoa(i) + "...")
-		if err := makeRequest(); err != nil {
+		if err := makeRequest(addr); err != nil {
 			log.Println(err)
 		}
 		time.Sleep(time.Duration(rand.Intn(1000)) * time.Millisecond)
 	}
 }
 
-func makeRequest() error {
+func makeRequest(addr string) error {
 	resp, err := http.Get(addr)
 	if err != nil {
 		return err
