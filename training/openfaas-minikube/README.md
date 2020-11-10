@@ -64,7 +64,7 @@ Follow the output, and you will get information about your current deployment.
 
 ## Acces OpenFaaS in minikube
 
-### 1. Using port forward (recomended)
+### 1. Using port forward
 
 Port-forward the OpenFaaS gateway service to local port 8080
 
