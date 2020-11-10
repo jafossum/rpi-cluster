@@ -30,7 +30,7 @@ Test that the installation is working with the following command:
 
     $ kubectl get nodes
 
-## Build and Test Docker Container
+## Build and Test Container
 
 ### Build
 
@@ -39,7 +39,11 @@ Remember to change your docker hub username :)
 
     $ ./build.sh
 
-### Run Local
+### Run Docker Image
+
+![](../../docs/resources/docker.png)
+
+*Docker Logo*
 
 Rune the Docker image with the following command
 
@@ -47,7 +51,39 @@ Rune the Docker image with the following command
 
 Test the container by going to `localhost:8080` in your web-browser
 
+## Run With Docker Compose x 4
+
+![](../../docs/resources/docker-compose.png)
+
+*Docker Compose Logo*
+
+After the test function has been built, it can be run by docker-compose in a 4x setup
+
+    $ docker-compose up -d
+
+Verify the containers are running
+
+    $ docker-compose ps
+
+Test the different endpoints by running the following
+
+    $ curl localhost:10001
+    $ curl localhost:10002
+    $ curl localhost:10003
+    $ curl localhost:10004
+
+Now you have 4 replicas of this function running as separate containers, 
+and docker-compose is responsible for keeping them running (just like a service contract)  
+
+Stop the containers with the following command
+
+    $ docker-compose down
+
 ## Run it on Kubernetes
+
+![](../../docs/resources/kubernetes.png)
+
+*Kubernetes logo*
 
 Deploy the container and service to kubernetes
 
@@ -57,7 +93,7 @@ Verify status
 
     $ kubectl get pods
 
-## Acces WebServer in minikube
+## Access WebServer in minikube
 
 Minikube needs to export the LoadBalancer service, so that it can be accessed from the outside.
 
