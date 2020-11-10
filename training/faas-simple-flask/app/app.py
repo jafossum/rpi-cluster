@@ -7,7 +7,8 @@ import os
 app = Flask(__name__)
 api = Api(app)
 
-class sayHello(Resource):
+
+class SayHello(Resource):
 
     def __init__(self):
         self.un = platform.uname()[1]
@@ -25,7 +26,9 @@ class sayHello(Resource):
 
         return 'Hello from ' + self.un + st
 
-api.add_resource(sayHello, '/')
+
+api.add_resource(SayHello, '/')
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 8080)))
