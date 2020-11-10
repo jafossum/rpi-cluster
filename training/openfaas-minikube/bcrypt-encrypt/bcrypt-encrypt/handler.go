@@ -64,6 +64,7 @@ func Handle(w http.ResponseWriter, r *http.Request) {
 		log.Println("JSON Decode error: ", err)
 		w.WriteHeader(http.StatusBadRequest)
 		json.NewEncoder(w).Encode(FailureResponse{Error: "JSON Decode error"})
+		return
 	}
 
 	// Validate defaults and encrypt
@@ -76,6 +77,7 @@ func Handle(w http.ResponseWriter, r *http.Request) {
 		log.Println("Encrypt error: ", err)
 		w.WriteHeader(http.StatusBadRequest)
 		json.NewEncoder(w).Encode(FailureResponse{Error: "Encrypt error"})
+		return
 	}
 
 	json.NewEncoder(w).Encode(DataResponse{Data: bc})
