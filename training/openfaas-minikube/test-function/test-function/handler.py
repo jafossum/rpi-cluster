@@ -1,7 +1,7 @@
 import platform
-import os
 
-class sayHello():
+
+class SayHello:
 
     def __init__(self):
         self.un = platform.uname()[1]
@@ -18,11 +18,13 @@ class sayHello():
             st += ', time: ' + time
 
         return {
-            "statusCode": 200,
+            "statusCode": 201,
             "body": 'Hello from ' + self.un + st + '\n'
         }
 
+
 def handle(event, context):
+
     print(event.method + " Received")
-    hello = sayHello()
+    hello = SayHello()
     return hello.get(event)
