@@ -26,18 +26,18 @@ Push your code to OpenFaaS
 
 Invoke your function through the OpenFaaS web console, curl, or with faas-cli
 
-    $ curl http://127.0.0.1:50569/function/test-function
+    $ curl http://127.0.0.1:8080/function/test-function
     $ faas-cli invoke test-function
 
 ## LoadTest the function with Curl
 
 Run the following command, replacing the adress with the function path
 
-    $ while true; do curl http://127.0.0.1:50569/function/test-function ; sleep 0.1; done
+    $ while true; do curl http://127.0.0.1:8080/function/test-function ; sleep 0.1; done
 
 Load test
 
-    $ for run in {1..10000}; do curl http://127.0.0.1:50569/function/test-function ; done
+    $ for run in {1..10000}; do curl http://127.0.0.1:8080/function/test-function ; done
 
 On the last run you should see the OpenFaaS console start to start more replicas of the function to handle the load
 

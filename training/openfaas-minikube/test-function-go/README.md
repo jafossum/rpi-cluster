@@ -27,7 +27,7 @@ Push your code to OpenFaaS
 
 Invoke your function through the OpenFaaS web console, curl, or with faas-cli
 
-    $ curl http://127.0.0.1:50569/function/test-function-go
+    $ curl http://127.0.0.1:8080/function/test-function-go
     $ faas-cli invoke test-function-go
 
 ## LoadTest the function 
@@ -36,11 +36,11 @@ Invoke your function through the OpenFaaS web console, curl, or with faas-cli
 
 Run the following command, replacing the adress with the function path
 
-    $ while true; do curl http://127.0.0.1:50569/function/test-function-go ; sleep 0.1; done
+    $ while true; do curl http://127.0.0.1:8080/function/test-function-go ; sleep 0.1; done
 
 Load test
 
-    $ for run in {1..10000}; do curl http://127.0.0.1:50569/function/test-function-go ; done
+    $ for run in {1..10000}; do curl http://127.0.0.1:8080/function/test-function-go ; done
 
 On the last run you should see the OpenFaaS console start to start more replicas of the function to handle the load
 
