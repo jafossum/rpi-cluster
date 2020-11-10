@@ -30,7 +30,9 @@ Invoke your function through the OpenFaaS web console, curl, or with faas-cli
     $ curl http://127.0.0.1:50569/function/test-function-go
     $ faas-cli invoke test-function-go
 
-## LoadTest the function with Curl
+## LoadTest the function 
+
+### Curl
 
 Run the following command, replacing the adress with the function path
 
@@ -41,6 +43,17 @@ Load test
     $ for run in {1..10000}; do curl http://127.0.0.1:50569/function/test-function-go ; done
 
 On the last run you should see the OpenFaaS console start to start more replicas of the function to handle the load
+
+### LoadTester
+
+There is provided a GO script for load-testing the REST endpoint
+
+    $ cd load-function
+    $ go run load-function.go -p <EXPOSED_OPENFAAS_PORT>
+
+To list the different input arguments run:
+
+    $ go run load-function.go -h
 
 ## Read the Logs
 
