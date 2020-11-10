@@ -30,7 +30,7 @@ func Handle(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPost {
 		log.Println("Only POST allowed, found: ", r.Method, " on: "+r.RequestURI)
 		w.WriteHeader(http.StatusBadRequest)
-		json.NewEncoder(w).Encode(FailureResponse{Error: "only GET allowed for this endpoint"})
+		json.NewEncoder(w).Encode(FailureResponse{Error: "only POST allowed for this endpoint"})
 		return
 	}
 
@@ -41,6 +41,7 @@ func Handle(w http.ResponseWriter, r *http.Request) {
 		log.Println("JSON Decode error: ", err)
 		w.WriteHeader(http.StatusBadRequest)
 		json.NewEncoder(w).Encode(FailureResponse{Error: "JSON Decode error"})
+		return
 	}
 
 	// Validate
@@ -49,6 +50,7 @@ func Handle(w http.ResponseWriter, r *http.Request) {
 		log.Println("Validation error: ", err)
 		w.WriteHeader(http.StatusBadRequest)
 		json.NewEncoder(w).Encode(FailureResponse{Error: "Validation error. Not a match!"})
+		return
 	}
 
 	w.WriteHeader(http.StatusNoContent)
