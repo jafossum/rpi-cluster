@@ -71,7 +71,7 @@ Port-forward the OpenFaaS gateway service to local port 8080
     $ kubectl rollout status -n openfaas deploy/gateway
     $ kubectl port-forward -n openfaas svc/gateway 8080:8080
 
-#### Set up faas-cli
+**faas-cli login**
 
 Now run the command in the the output section `# If basic auth is enabled, you can now log into your gateway:`
 to setup the faas-cli. This now defaults to http://127.0.0.1:8080
@@ -83,7 +83,30 @@ faas-cli should now be connected to the minikube OpenFaaS deployment. Check with
 
     $ faas-cli list
 
-### 2. Using minikube service
+### 2. Using minikube tunnel
+
+Minikube needs to export the LoadBalancer service, so that it can be accessed from the outside.
+This will enable us to access the OpenFaaS web, and use `faas-cli`
+
+    $ minikube tunnel
+
+Verify External-IP on the LoadBalancer
+
+    $ kubectl get services -n openfaas
+
+**faas-cli login**
+
+Now run the command in the the output section `# If basic auth is enabled, you can now log into your gateway:`
+to setup the faas-cli. This now defaults to http://127.0.0.1:8080
+
+    $ PASSWORD=$(kubectl get secret -n openfaas basic-auth -o jsonpath="{.data.basic-auth-password}" | base64 --decode; echo)
+    $ echo -n $PASSWORD | faas-cli login --username admin --password-stdin
+
+faas-cli should now be connected to the minikube OpenFaaS deployment. Check with
+
+    $ faas-cli list
+
+### 3. Using minikube service
 
 Minikube needs to export the LoadBalancer service, so that it can be accessed from the outside.
 This will enable us to access the OpenFaaS web, and use `faas-cli`
