@@ -1,10 +1,8 @@
 version: 1.0
 provider:
   name: openfaas
-  gateway: http://127.0.0.1:50569
 functions:
   test-function-go:
     lang: golang-middleware
     handler: ./test-function-go
     image: jafossum/test-function-go:latest
-
