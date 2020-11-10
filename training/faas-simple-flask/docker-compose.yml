@@ -1,0 +1,43 @@
+version: '3.7'
+
+services:
+
+  valve-something-1:
+    image: jafossum/faas-simple-flask
+    expose:
+      - "8080"
+    ports:
+      - "10001:8080"
+    env_file:
+      - "./docker.env"
+    restart: unless-stopped
+
+  valve-something-2:
+    image: jafossum/faas-simple-flask
+    expose:
+      - "8080"
+    ports:
+      - "10002:8080"
+    env_file:
+      - "./docker.env"
+    restart: unless-stopped
+
+  valve-something-3:
+    image: jafossum/faas-simple-flask
+    expose:
+      - "8080"
+    ports:
+      - "10003:8080"
+    env_file:
+      - "./docker.env"
+    restart: unless-stopped
+
+  valve-something-4:
+    image: jafossum/faas-simple-flask
+    expose:
+      - "8080"
+    ports:
+      - "10004:8080"
+    env_file:
+      - "./docker.env"
+    restart: unless-stopped
