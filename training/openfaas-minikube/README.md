@@ -21,6 +21,10 @@ Start minikube
     $ minikube start
     $ minikube status
 
+Run the Kubernetes Dashboard using this command
+
+    $ minikube dashboard
+
 This will set up a local kubernetes cluster running on you local machine.
 Minikube will also install `kubernetes-cli (kubectl)`.
 
@@ -93,6 +97,8 @@ This will enable us to access the OpenFaaS web, and use `faas-cli`
 Verify External-IP on the LoadBalancer
 
     $ kubectl get services -n openfaas
+
+The tunnel will adapt to the creation or removal of any LoadBalancer service, so this can be kept running 
 
 **faas-cli login**
 
