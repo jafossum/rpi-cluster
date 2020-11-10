@@ -46,7 +46,7 @@ Push your code to OpenFaaS
 Invoke your function through the OpenFaaS web console, curl, or with faas-cli
 (Remember to put a `\` before each \$ in the resulting hash in the JSON request)
 
-    $ curl -d "{\"text\":\"some-passwd\",\"hash\":\"\$2a\$10\$vftrptYx21rjd3v09Vhmn.Gw3dsDDxzY6RD.hA10KfgCuYltV9.wq\"}" localhost:8080
+    $ curl -d "{\"text\":\"some-passwd\",\"hash\":\"\$2a\$10\$vftrptYx21rjd3v09Vhmn.Gw3dsDDxzY6RD.hA10KfgCuYltV9.wq\"}" http://127.0.0.1:8080/function/bcrypt-validate
 
 ### Test with Docker
 
