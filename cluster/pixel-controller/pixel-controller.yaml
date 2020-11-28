@@ -1,8 +1,14 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: pixel-controller
 
+---
 apiVersion: apps/v1
 kind: DaemonSet
 metadata:
   name: pixel-controller
+  namespace: pixel-controller
   labels:
     app: pixel-controller
 spec:
