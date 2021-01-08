@@ -15,11 +15,21 @@ const (
 	dir = "/home/pi/pixels/"
 )
 
+// var shared between function calls
+var hostName string
+
 func main() {
 	// Init rand generator
 	rand.Seed(time.Now().UnixNano())
 
 	log.Println("Starting")
+
+	// Get hostname from host
+	name, err := os.Hostname()
+	if err != nil {
+		panic(err)
+	}
+	hostName = name
 
 	http.HandleFunc("/blinkt", handler)
 	log.Fatal(http.ListenAndServe(":8081", nil))
@@ -28,7 +38,7 @@ func main() {
 func handler(w http.ResponseWriter, r *http.Request) {
 	fi := createFile()
 	defer deleteFile(fi)
-	fmt.Fprintf(w, "Hello! File: "+fi)
+	fmt.Fprintf(w, "Hello! File: "+ fi + " - From: " + hostName)
 	time.Sleep(time.Second)
 }
 
