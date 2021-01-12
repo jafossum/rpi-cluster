@@ -43,7 +43,7 @@ func main() {
 func loopReuest(addr string, i int) {
 	for {
 		time.Sleep(time.Duration(rand.Intn(1000)) * time.Millisecond)
-		log.Println("Make new reuest - " + strconv.Itoa(i) + "...")
+		// log.Println("Make new reuest - " + strconv.Itoa(i) + "...")
 		if err := makeRequest(addr); err != nil {
 			log.Println(err)
 		}
