@@ -42,6 +42,8 @@ spec:
         volumeMounts:
         - mountPath: /home/pi/pixels
           name: dir
+        securityContext:
+          privileged: true
       imagePullSecrets:
       - name: regcred
       volumes:

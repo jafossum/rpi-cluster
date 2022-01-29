@@ -1,9 +1,8 @@
-FROM balenalib/raspberry-pi-python:3.7-run
+FROM arm32v7/python:3-buster
 
 LABEL maintainer="John A. Fossum"
 
-RUN apt-get update -qy && apt-get install -qy \
-    python3-blinkt
+RUN pip3 install --no-cache-dir blinkt
 
 WORKDIR /app
 
