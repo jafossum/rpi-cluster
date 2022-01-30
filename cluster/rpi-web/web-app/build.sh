@@ -1,6 +1,6 @@
 # Build image
-docker build . -t jafossum/web-app-blinkt
+docker build . -t ghcr.io/jafossum/web-app-blinkt
 
 # Push image
-docker push jafossum/web-app-blinkt
+docker push ghcr.io/jafossum/web-app-blinkt
 

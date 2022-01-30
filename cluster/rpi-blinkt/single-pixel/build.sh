@@ -1,5 +1,5 @@
 # Build image
-docker build . -t jafossum/blinkt-single-pixel
+docker build . -t ghcr.io/jafossum/blinkt-single-pixel
 
 # Push image
-docker push jafossum/blinkt-single-pixel
+docker push ghcr.io/jafossum/blinkt-single-pixel

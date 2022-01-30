@@ -1,6 +1,6 @@
 # Build image
-docker build . -t jafossum/cron-app-blinkt
+docker build . -t ghcr.io/jafossum/cron-app-blinkt
 
 # Push image
-docker push jafossum/cron-app-blinkt
+docker push ghcr.io/jafossum/cron-app-blinkt
 

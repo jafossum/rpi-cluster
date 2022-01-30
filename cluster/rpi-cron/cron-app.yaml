@@ -10,7 +10,7 @@ spec:
         spec:
           containers:
             - name: cron-app
-              image: jafossum/cron-app-blinkt:latest
+              image: ghcr.io/jafossum/cron-app-blinkt:latest
               volumeMounts:
                 - mountPath: /home/pi/pixels
                   name: dir
