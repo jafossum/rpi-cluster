@@ -11,34 +11,33 @@ spec:
       app: web-app
   template:
     metadata:
-      labels: 
+      labels:
         app: web-app
     spec:
       containers:
-      - name: web-app
-        image: jafossum/web-app-blinkt:latest
-        ports:
-        - containerPort: 8081
-        volumeMounts:
-        - mountPath: /home/pi/pixels
-          name: dir 
+        - name: web-app
+          image: ghcr.io/jafossum/web-app-blinkt:latest
+          ports:
+            - containerPort: 8081
+          volumeMounts:
+            - mountPath: /home/pi/pixels
+              name: dir
       volumes:
-      - name: dir
-        hostPath:
-          path: /home/pi/pixels
-          type: DirectoryOrCreate
+        - name: dir
+          hostPath:
+            path: /home/pi/pixels
+            type: DirectoryOrCreate
 ---
 apiVersion: v1
 kind: Service
-metadata: 
+metadata:
   name: web-app-service
 spec:
   selector:
     app: web-app
   type: LoadBalancer
   ports:
-  - protocol: TCP
-    port: 8081
-    targetPort: 8081
-    nodePort: 30000
-
+    - protocol: TCP
+      port: 8081
+      targetPort: 8081
+      nodePort: 30000

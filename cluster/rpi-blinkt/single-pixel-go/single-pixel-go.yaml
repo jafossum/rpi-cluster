@@ -15,25 +15,24 @@ spec:
         app: single-pixel-go
     spec:
       containers:
-      - name: single-pixel-go
-        image: jafossum/blinkt-single-pixel-go:latest
-        env:
-        - name: BRIGHTNESS_1
-          value: "0"
-        - name: BRIGHTNESS_2
-          value: "128"
-        - name: BRIGHTNESS_3
-          value: "0" 
-        volumeMounts:
-        - mountPath: /home/pi/pixels
-          name: dir
-        securityContext:
-          privileged: true
+        - name: single-pixel-go
+          image: ghcr.io/jafossum/blinkt-single-pixel-go:latest
+          env:
+            - name: BRIGHTNESS_1
+              value: "0"
+            - name: BRIGHTNESS_2
+              value: "128"
+            - name: BRIGHTNESS_3
+              value: "0"
+          volumeMounts:
+            - mountPath: /home/pi/pixels
+              name: dir
+          securityContext:
+            privileged: true
       imagePullSecrets:
-      - name: regcred
+        - name: regcred
       volumes:
-      - name: dir
-        hostPath:
-          path: /home/pi/pixels
-          type: DirectoryOrCreate
-
+        - name: dir
+          hostPath:
+            path: /home/pi/pixels
+            type: DirectoryOrCreate
